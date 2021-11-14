@@ -183,6 +183,19 @@ app.get('/koncertai-vietosnr', (req, res) => {
     })
 })
 
+app.get('/koncertai-renginioadresas', (req, res) => {
+    const sql = `
+        SELECT DISTINCT renginioadresas
+        FROM koncertai
+    `;
+    con.query(sql, (err, results) => {
+        if (err) {
+            throw err;
+        }
+        res.send(results);
+    })
+})
+
 // FILTER - GET DATA BY TYPE
 app.get('/koncertai-filter/:t', (req, res) => {
     const sql = `

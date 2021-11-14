@@ -77,6 +77,7 @@ const [error, setError] = useState('');
 
     // ----------------- FILTERING -----------------
     const [vietostipas, setVietostipas] = useState([]);  // filters dropbox options
+    const [renginioadresas, setRenginioadresas] = useState([]);
     const [vietosnr, setVietosnr] = useState([]);
     const [filterBy, setFilterBy] = useState('');
     const [filterBy2, setFilterBy2] = useState('');
@@ -93,6 +94,13 @@ const [error, setError] = useState('');
             .then(res => {
                 console.log('VIETOSnr ', res.data)
                 setVietosnr(res.data);
+                // console.log(res.data);
+            })
+
+        axios.get('http://localhost:3003/koncertai-renginioadresas')
+            .then(res => {
+                console.log('RENGINIOADRESAS ', res.data)
+                setRenginioadresas(res.data);
                 // console.log(res.data);
             })
     }, [lastUpdate])
@@ -240,11 +248,11 @@ const [error, setError] = useState('');
                         <div className="main">
                             <WarningModal showWarningModal={showWarningModal} setShowWarningModal={setShowWarningModal} error={error}/>
                             <ConfirmDelete showDeleteCofirm={showDeleteCofirm} setShowDeleteConfirm={setShowDeleteConfirm} deleteConfirmed={deleteConfirmed} setDeleteConfirmed={setDeleteConfirmed} rcrdMarked={rcrdMarked} remove={remove}/>
-                            <Modal edit={edit} remove={remove} modalItem={modalItem} showModal={showModal} setShowModal={setShowModal} vietostipas={vietostipas} confirmDelete={confirmDelete} setShowWarningModal={setShowWarningModal} error={error} setError={setError}></Modal>
+                            <Modal edit={edit} remove={remove} modalItem={modalItem} showModal={showModal} setShowModal={setShowModal} vietostipas={vietostipas} renginioadresas={renginioadresas} confirmDelete={confirmDelete} setShowWarningModal={setShowWarningModal} error={error} setError={setError}></Modal>
                             <div className="nav">
                                 <Nav searchBy={searchBy}  setSearchBy={setSearchBy} filterBy={filterBy} setFilterBy={setFilterBy} filterBy2={filterBy2} setFilterBy2={setFilterBy2} sortConditions={sortConditions} handleSort={handleSort} vietostipas={vietostipas} vietosnr={vietosnr} reset={reset}></Nav>
                                 <Create create={create} handleNewRecord={handleNewRecord} setShowWarningModal={setShowWarningModal} error={error} setError={setError}></Create>
-                                <NewRecord create={create} showNewRecordModal={showNewRecordModal} setShowNewRecordModal={setShowNewRecordModal} setShowWarningModal={setShowWarningModal} vietostipas={vietostipas} error={error} setError={setError}></NewRecord>
+                                <NewRecord create={create} showNewRecordModal={showNewRecordModal} setShowNewRecordModal={setShowNewRecordModal} setShowWarningModal={setShowWarningModal} vietostipas={vietostipas} renginioadresas={renginioadresas} error={error} setError={setError}></NewRecord>
                             </div>
                             <List items={items} setShowModal={setShowModal} setModalItem={setModalItem} confirmDelete={confirmDelete}></List>
                         </div>

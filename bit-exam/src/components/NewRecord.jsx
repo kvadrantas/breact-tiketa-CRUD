@@ -3,7 +3,7 @@ import isValidf from "../js/isValidf";
 // import moment from "moment-timezone";
 
 
-function NewRecord({create, showNewRecordModal, setShowNewRecordModal, vietostipas, setShowWarningModal, error, setError}) {
+function NewRecord({create, showNewRecordModal, setShowNewRecordModal, vietostipas, renginioadresas, setShowWarningModal, error, setError}) {
 
     const [inputs, setInputs] = useState({
         renginys: '',
@@ -88,21 +88,28 @@ function NewRecord({create, showNewRecordModal, setShowNewRecordModal, vietostip
                 <label htmlFor="">Laikas*</label>
                 <input type="time" value={inputs.laikas} onChange={(e) => formControl(e, 'laikas')} />
                 <label htmlFor="">Kur Vyksta*</label>
-                <input type="text" value={inputs.renginioadresas} onChange={(e) => formControl(e, 'renginioadresas')} />
+                {/* <input type="text" value={inputs.renginioadresas} onChange={(e) => formControl(e, 'renginioadresas')} /> */}
+                <select name="" id="" value={inputs.renginioadresas} onChange={(e) => formControl(e, 'renginioadresas')}>
+                    {renginioadresas.map((e, i) => <option key={i} value={e.renginioadresas}>{e.renginioadresas}</option>)}
+                </select>
 
                 <label htmlFor="">Vietos tipas*</label>
-                <input type="text" value={inputs.vietostipas} onChange={(e) => formControl(e, 'vietostipas')} />
+                {/* <input type="text" value={inputs.vietostipas} onChange={(e) => formControl(e, 'vietostipas')} /> */}
+                <select name="" id="" value={inputs.vietostipas} onChange={(e) => formControl(e, 'vietostipas')}>
+                    {vietostipas.map((e, i) => <option key={i} value={e.vietostipas}>{e.vietostipas}</option>)}
+                </select>
+
                 <label htmlFor="">Vietos nr*</label>
                 <input type="text" value={inputs.vietosnr} onChange={(e) => formControl(e, 'vietosnr')} />
                 {/* <label>renginys*</label><input kaina="text" value={inputs.renginys} onChange={(e) => formControl(e, 'renginys')} />
                 <label>kaina*</label><input kaina="text" value={inputs.kaina} onChange={(e) => formControl(e, 'kaina')} /> */}
-                <label>Vietos tipas*</label>
+                {/* <label>Vietos tipas*</label>
                 <select name="" id="" value={inputs.kaina} onChange={(e) => formControl(e, 'kaina')}>
                     <option value="default" hidden>Select kaina...</option>
                     {vietostipas.map((e, i) => <option key={i} value={e.kaina}>{e.kaina}</option>)}
                     
                 </select>
-                <label>data*</label><input kaina="number" value={inputs.data} onChange={(e) => formControl(e, 'data')} />
+                <label>data*</label><input kaina="number" value={inputs.data} onChange={(e) => formControl(e, 'data')} /> */}
                 {/* <label>laikas*</label><input kaina="number" value={inputs.laikas} onChange={(e) => formControl(e, 'laikas')} />
                 <label>In Stock</label>
                 <select name="" id="" value={inputs.renginioadresas} onChange={(e) => formControl(e, 'renginioadresas')}>

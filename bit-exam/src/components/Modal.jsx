@@ -3,7 +3,7 @@ import isValidf from "../js/isValidf";
 // import moment from "moment-timezone";
 
 
-function Modal({edit, confirmDelete, modalItem, showModal, setShowModal, kainas, setShowWarningModal, error, setError}) {
+function Modal({edit, confirmDelete, modalItem, showModal, setShowModal, kainas, vietostipas, renginioadresas, setShowWarningModal, error, setError}) {
 
     const [inputs, setInputs] = useState({        
         renginys: '',
@@ -108,10 +108,18 @@ function Modal({edit, confirmDelete, modalItem, showModal, setShowModal, kainas,
                 <label htmlFor="">Laikas*</label>
                 <input type="time" value={inputs.laikas} onChange={(e) => formControl(e, 'laikas')} />
                 <label htmlFor="">Kur Vyksta*</label>
-                <input type="text" value={inputs.renginioadresas} onChange={(e) => formControl(e, 'renginioadresas')} />
+                {/* <input type="text" value={inputs.renginioadresas} onChange={(e) => formControl(e, 'renginioadresas')} /> */}
+                <select name="" id="" value={inputs.renginioadresas} onChange={(e) => formControl(e, 'renginioadresas')}>
+                    {renginioadresas.map((e, i) => <option key={i} value={e.renginioadresas}>{e.renginioadresas}</option>)}
+                </select>
 
                 <label htmlFor="">Vietos tipas*</label>
-                <input type="text" value={inputs.vietostipas} onChange={(e) => formControl(e, 'vietostipas')} />
+                {/* <input type="text" value={inputs.vietostipas} onChange={(e) => formControl(e, 'vietostipas')} /> */}
+                <select name="" id="" value={inputs.vietostipas} onChange={(e) => formControl(e, 'vietostipas')}>
+                    {vietostipas.map((e, i) => <option key={i} value={e.vietostipas}>{e.vietostipas}</option>)}
+                </select>
+
+
                 <label htmlFor="">Vietos nr*</label>
                 <input type="text" value={inputs.vietosnr} onChange={(e) => formControl(e, 'vietosnr')} />
                 {/* <label>Product*</label><input kaina="text" value={inputs.renginys} onChange={(e) => formControl(e, 'renginys')} />
